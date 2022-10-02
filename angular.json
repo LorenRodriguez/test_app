@@ -96,6 +96,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/fontawesome/scss/fontawesome.scss",
+              "src/assets/fontawesome/scss/light.scss",
               "src/styles.scss"
             ],
             "scripts": []

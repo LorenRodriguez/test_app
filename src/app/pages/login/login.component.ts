@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   formulario: FormGroup = this.fb.group({
     email: [null, [Validators.email, Validators.required]],
     password: [null, [Validators.minLength(5), Validators.required]],
+    recordar: false,
   });
 
   constructor(
@@ -26,7 +27,10 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
+  /**
+   * submit del formulario para hacer login
+   * si no es valido se muestran errores y no hace login
+   * */
   login() {
     if (!this.formulario.valid) {
       this.mostrarErrores();
@@ -71,5 +75,9 @@ export class LoginComponent implements OnInit {
         }
       }
     });
+  }
+
+  setLanguage(lang: string) {
+    this.loginService.changeLang(lang);
   }
 }

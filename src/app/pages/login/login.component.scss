@@ -1,0 +1,133 @@
+$boxBackgroundColor: #fff;
+$colorInputs: #c1c1c1;
+$fontSizeLogin: 20px;
+$colorBlue: #0d63bc;
+
+$breakpoints: (
+  sm: 540px,
+  md: 960px,
+  lg: 1024px,
+);
+
+@mixin media-up($breakpoint) {
+  @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+.box {
+  position: relative;
+  background-color: $boxBackgroundColor;
+  width: 22rem;
+  padding: 2rem;
+  text-align: center;
+  @include media-up(sm) {
+    margin-top: 0.5rem;
+    width: 90%;
+  }
+
+  .box-header {
+    img {
+      width: 115px;
+      height: 125px;
+      border: $colorInputs;
+    }
+  }
+
+  .box-body {
+    .box-input {
+      position: relative;
+      border-bottom: 1px solid $colorInputs;
+      margin-bottom: 30px;
+      text-align: left;
+      line-height: 10px;
+      height: 30px;
+
+      i {
+        color: $colorInputs;
+        font-size: $fontSizeLogin;
+      }
+
+      .form-control {
+        outline: none;
+        border: none;
+        background-color: transparent;
+        font-size: $fontSizeLogin;
+        margin-left: 10px;
+        width: 90%;
+        @include media-up(sm) {
+          width: 80% !important;
+        }
+      }
+
+      input::placeholder {
+        color: $colorInputs;
+      }
+    }
+    // animacion subrayado de los contenedores que tienen los inputs
+    .box-input:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $colorBlue;
+      transform-origin: bottom left;
+      transition: transform 0.25s ease-out;
+    }
+    // animacion subrayado de los contenedores que tienen los inputs
+    .box-input:hover:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    .box-language {
+      text-align: right;
+      img:not(:last-child) {
+        padding-right: 1rem;
+      }
+      margin-bottom: 0;
+    }
+
+    .box-recordar {
+      width: inherit;
+      text-align: left;
+
+      .slide {
+        float: right;
+
+        .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+          background-color: $colorBlue !important;
+        }
+
+        .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+          background-color: rgba(13, 99, 188, 0.54);
+        }
+      }
+    }
+  }
+
+  .box-footer {
+    margin-top: 10px;
+
+    .btn {
+      border: solid 2px $colorBlue;
+      font-size: $fontSizeLogin;
+      padding: 0.5rem 3rem;
+      background-color: transparent;
+      display: inline-block;
+      font-weight: 400;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      border-radius: 2.25rem;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: $colorBlue;
+      color: $boxBackgroundColor;
+    }
+  }
+}

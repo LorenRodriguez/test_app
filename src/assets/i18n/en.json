@@ -5,5 +5,10 @@
         "titulo":"Technical test",
         "recordar":"Rememberme",
         "acceder":"Login"
-    }
+    },
+    "validacion": {
+        "campo-requerido": "The field {{campo}} is required",
+        "mail-incorrecto": "The email entered is incorrect",
+        "min-caracteres": "The field {{campo}} must contain at least {{numCarac}}"
+      }
 }
