@@ -74,3 +74,12 @@ $maxFont: 24;
 .pointer {
   cursor: pointer;
 }
+
+// machacamos estilos que vienen de agular material para el slide
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #0d63bc !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgba(13, 99, 188, 0.54);
+}
