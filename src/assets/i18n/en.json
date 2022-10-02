@@ -1,6 +1,9 @@
 {
     "login": {
         "mail": "Email",
-        "contrasena": "Password"
+        "contrasena": "Password",
+        "titulo":"Technical test",
+        "recordar":"Rememberme",
+        "acceder":"Login"
     }
 }

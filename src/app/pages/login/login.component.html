@@ -1,4 +1,36 @@
-
-<div>
-    <span > {{ 'login.mail' | translate }}fffff<i class="fa-light fa-user"></i> </span>
+<div class="box">
+  <form [formGroup]="formulario" (ngSubmit)="login()">
+    <div class="box-header">
+      <img src="../assets/img/logo.jpg" alt="" />
+    </div>
+    <div class box-body>
+      <h3>{{ "login.titulo" | translate }}</h3>
+      <div class="box-input">
+        <i class="fa-solid fa-user"></i>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="{{ 'login.mail' | translate }}"
+        />
+      </div>
+      <div class="box-input">
+        <i class="fa-solid fa-lock"></i>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="{{ 'login.contrasena' | translate }}"
+        />
+      </div>
+      <div>
+        <span
+          ><b>{{ "login.recordar" | translate }}</b></span
+        >
+      </div>
+    </div>
+    <div class="box-footer">
+      <button type="submit">{{ "login.acceder" | translate }}</button>
+    </div>
+  </form>
 </div>
+
+<notifier-container></notifier-container>

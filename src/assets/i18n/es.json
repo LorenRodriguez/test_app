@@ -1,6 +1,15 @@
 {
-    "login": {
-        "mail": "Email",
-        "contrasena": "Contraseña"
-    }
+  "login": {
+    "mail": "Email",
+    "contrasena": "Contraseña",
+    "titulo": "Prueba técnica",
+    "recordar": "Recordar",
+    "acceder": "Acceder",
+    "sesion-iniciada": "Sesión iniciada con"
+  },
+  "validacion": {
+    "campo-requerido": "El campo {{campo}} es requerido",
+    "mail-incorrecto": "El Email introducido es incorrecto",
+    "min-caracteres": "El campo {{campo}} ha de contener al menos {{numCarac}}"
+  }
 }
