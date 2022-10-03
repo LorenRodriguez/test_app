@@ -3,7 +3,7 @@
         "mail": "Email",
         "contrasena": "Password",
         "titulo":"Technical test",
-        "recordar":"Rememberme",
+        "recordar":"Remember",
         "acceder":"Login"
     },
     "validacion": {

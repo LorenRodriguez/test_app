@@ -64,6 +64,9 @@ $breakpoints: (
         color: $colorInputs;
       }
     }
+    .box-input:hover {
+      border-color: $colorInputs !important;
+    }
     // animacion subrayado de los contenedores que tienen los inputs
     .box-input:after {
       content: "";
@@ -122,4 +125,8 @@ $breakpoints: (
       color: $boxBackgroundColor;
     }
   }
+}
+
+.is-invalid {
+  border-color: red !important;
 }

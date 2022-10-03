@@ -13,11 +13,7 @@ import { UsuarioModel } from 'src/app/models/usuario.interface';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  formulario: FormGroup = this.fb.group({
-    email: [null, [Validators.email, Validators.required]],
-    password: [null, [Validators.minLength(5), Validators.required]],
-    recordar: false,
-  });
+  formulario: FormGroup = this.fb.group({});
 
   constructor(
     private fb: FormBuilder,
@@ -26,14 +22,28 @@ export class LoginComponent implements OnInit {
     private notifierService: NotifierService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.formulario = this.fb.group({
+      email: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
+        ],
+      ],
+      password: [null, [Validators.required, Validators.minLength(5)]],
+      recordar: false,
+    });
+  }
+
   /**
    * submit del formulario para hacer login
    * si no es valido se muestran errores y no hace login
    * */
   login() {
     if (!this.formulario.valid) {
-      this.mostrarErrores();
+      this.showErrors();
+      console.log(this.formulario);
       return;
     }
 
@@ -43,7 +53,7 @@ export class LoginComponent implements OnInit {
     };
     this.loginService
       .iniciarSesion(usuario)
-      .subscribe((resp) =>
+      .subscribe(() =>
         this.notifierService.notify(
           'success',
           this.translateService.instant('login.sesion-iniciada')
@@ -51,10 +61,8 @@ export class LoginComponent implements OnInit {
       );
   }
 
-  /** buscamos los errores de los campos de manera dinamica e informamos de ellos
-   * el error del formato mail nos interesa al lado del input por lo que no se informa por notificacion
-   * */
-  mostrarErrores() {
+  // buscamos los errores de los campos de manera dinamica e informamos de ellos
+   showErrors() {
     Object.keys(this.formulario.controls).forEach((key) => {
       const control = this.formulario.get(key);
       console.log(control);
@@ -66,6 +74,13 @@ export class LoginComponent implements OnInit {
           );
           this.notifierService.notify('error', mensaje);
         }
+        if (control.errors['pattern']) {
+          const mensaje = this.translateService.instant(
+            'validacion.mail-incorrecto',
+            { campo: key }
+          );
+          this.notifierService.notify('error', mensaje);
+        }
         if (control.errors['minlength']) {
           const mensaje = this.translateService.instant(
             'validacion.min-caracteres',
@@ -73,6 +88,7 @@ export class LoginComponent implements OnInit {
           );
           this.notifierService.notify('error', mensaje);
         }
+        control.markAsTouched();
       }
     });
   }

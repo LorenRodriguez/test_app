@@ -19,16 +19,28 @@
           alt=""
         />
       </div>
-      <div class="box-input">
+      <div
+        class="box-input"
+        [class.is-invalid]="
+          formulario.get('email')?.invalid &&
+          formulario.get('email')?.touched
+        "
+      >
         <i class="fa-light fa-user"></i>
         <input
           class="form-control"
-          type="email"
+          type="text"
           formControlName="email"
           placeholder="{{ 'login.mail' | translate }}"
         />
       </div>
-      <div class="box-input">
+      <div
+        class="box-input"
+        [class.is-invalid]="
+          formulario.get('password')?.invalid &&
+          formulario.get('password')?.touched
+        "
+      >
         <i class="fa-light fa-lock"></i>
         <input
           class="form-control"
